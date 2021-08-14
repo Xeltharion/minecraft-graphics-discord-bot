@@ -1,0 +1,17 @@
+{
+  "name": "minecraft-graphics-discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node bot.js",
+    "daemon": "node index.js"
+  },
+  "author": "Power Shield",
+  "license": "GNU General Public License v3.0",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "forever": "^3.0.2"
+  }
+}
