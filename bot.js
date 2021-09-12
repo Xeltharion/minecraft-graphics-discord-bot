@@ -12,7 +12,7 @@ bot.on("ready", (user) => {
 });
 
 bot.on("message", async (msg) => {
-  if (!msg.author.bot && (msg.channel.id == "789450109778919435" || msg.channel.id == "788045009969479680")) {
+  if (!msg.author.bot && ["789450109778919435", "788045009969479680", "884155630405967873", "884156287582081084"].indexOf(msg.channel.id) !== -1) {
     let message, attachment;
 
     switch (msg.channel.id) {
@@ -25,7 +25,19 @@ bot.on("message", async (msg) => {
       case "788045009969479680":
         if (msg.attachments.size == 0) {
           message = `\n**Screenshots only!**\nAll discussions in <#788037245591617542>`;
-          attachment = new MessageAttachment("https://www.minecraft.net/content/dam/games/minecraft/marketplace/CommunityCelebration_TerraSwoop_header2.jpg.transform/minecraft-image-large/image.jpg");
+          attachment = new MessageAttachment("https://static.planetminecraft.com/files/resource_media/screenshot/1806/0fvtgsv-1518390375.png");
+        }
+        break;
+      case "884155630405967873":
+        if (msg.attachments.size == 0) {
+          message = `\n**Maps screenshots only!**\nAll discussions in <#884155479578775562>`;
+          attachment = new MessageAttachment("https://static.planetminecraft.com/files/resource_media/screenshot/1812/2018-03-21-00-36-32-1521675372.png");
+        }
+        break;
+      case "884156287582081084":
+        if (msg.attachments.size == 0) {
+          message = `\n**Mods screenshots only!**\nAll discussions in <#884156243604832256>`;
+          attachment = new MessageAttachment("https://static.planetminecraft.com/files/image/minecraft/mod/2021/956/14863961-image_l.jpg");
         }
         break;
     }
@@ -34,8 +46,15 @@ bot.on("message", async (msg) => {
       msg.channel.send(`${msg.author} ${message}`, attachment).then((m) => {
         m.delete({ timeout: 60000 });
       });
-      msg.delete();
+    } else {
+      msg.react("789807922061246464");
+      msg.react("789807922041454602");
     }
+  }
+
+  if (["806523428768186419", "806523281112956938", "801771400137539584", "788037245591617540"].indexOf(msg.channel.id) !== -1) {
+    msg.react("789807922061246464");
+    msg.react("789807922041454602");
   }
 });
 bot.login(token);
